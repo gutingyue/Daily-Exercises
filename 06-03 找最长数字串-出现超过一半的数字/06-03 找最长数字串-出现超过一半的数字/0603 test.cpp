@@ -1,7 +1,25 @@
 #include <iostream>
 #include <cstdio>
 #include <string>
+#include <vector>
 using namespace std;
+
+int MoreThanHalfNum_Solution(vector<int> numbers) {
+	vector<int> count;
+	count.resize(10, 0);
+
+	for (int i = 0; i<numbers.size(); ++i){
+		++count[numbers[i]];
+	}
+
+	for (int i = 0; i<count.size(); ++i){
+		if (count[i] >= (numbers.size() / 2))
+			return i;
+	}
+
+	return 0;
+}
+
 
 bool isnumber(char c){
 	if (c >= 48 && c <= 57){
@@ -10,8 +28,8 @@ bool isnumber(char c){
 	return false;
 }
 
-int main(){
-	string s="12abc123a";
+void MaxNumstr(){
+	string s = "12abc123a";
 	//getline(cin, s);
 
 	size_t frist = 0;
@@ -38,6 +56,15 @@ int main(){
 		cout << s[frist + i];
 		i++;
 	}
+}
+
+
+int main(){
+	//MaxNumstr();
+
+	vector<int> numbers{ 1, 2, 2, 2, 2, 3, 4, 2 };
+	MoreThanHalfNum_Solution(numbers);
+
 	return 0;
 }
 
